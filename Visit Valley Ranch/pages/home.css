@@ -1,0 +1,15 @@
+/* Map */ 
+#map {
+    background-color: #79A8A9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+#map > h2 {
+    text-align: center;
+    position: relative;
+    color: #002938;
+    font-weight: 300;
+    margin-top: 0.5rem;
+}
