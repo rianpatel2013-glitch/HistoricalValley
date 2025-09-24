@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Valley Ranch's Historical Events</title> 
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="../../navbar.css">
+    <link rel="stylesheet" href="events.css">
+    <script src="../../navbar.js" defer></script>
+    <script src="events.js" defer></script>
+</head>
+<body>
+    <!-- Drop Down Menu for Small Screens -->
+    <header class="mobile-header">
+        <div class="header-brand">
+            <img src="../../assets/logo.png" alt="Hometown Hotspot Logo">
+            <h1 class="site-title">Visit Valley Ranch</h1>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav class="mobile-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../stories/stories.html">Stories</a>
+            <a id="currentTabSidebar" href="#">Historical Events</a>
+            <a href="../fun_facts/facts.html">Fun Facts</a>
+            <a href="../about/about.html">About</a>
+            <a href="../search_bar/search.html">Have any Questions?</a>
+            <a href="../log_in/log_in.html">Log In</a>
+            <a href="../sign_up/sign_up.html">Sign Up</a>
+        </nav>
+    </header>
+
+    <!-- Sidebar for Bigger Screens -->
+    <aside class="desktop-sidebar" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <img src="../../assets/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
+            <h1 class="site-title">Visit Valley Ranch</h1>
+        </div>
+        <nav class="desktop-nav">
+            <a href="../index.html">Home</a>
+            <a href="../stories/stories.html">Stories</a>
+            <a id="currentTabSidebar" href="#">Historical Events</a>
+            <a href="../about/about.html">About</a>
+            <a href="../fun_facts/facts.html">Fun Facts</a>
+            <a href="../search_bar/search.html">Have any Questions?</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" aria-hidden="true"></div>
+
+    <main>
+    </main>
+</body>
+</html>

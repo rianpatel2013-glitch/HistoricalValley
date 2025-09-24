@@ -1,0 +1,30 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F4F7F7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+main > h2,
+main > h3 {
+    text-align: center;
+    color: #002938;
+    font-weight: 300;
+}
+
+a:focus,
+button:focus {
+    outline: 2px solid #79A8A9;
+    outline-offset: 2px;
+}
