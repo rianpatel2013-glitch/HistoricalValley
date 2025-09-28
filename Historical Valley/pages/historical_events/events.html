@@ -12,16 +12,16 @@
 </head>
 <body>
     <!-- Drop Down Menu for Small Screens -->
-    <header class="mobile-header">
-        <div class="header-brand">
+    <header class="small-screen-header">
+        <div class="header-styles">
             <img src="../../assets/logo.png" alt="Hometown Hotspot Logo">
-            <h1 class="site-title">Visit Valley Ranch</h1>
+            <h1 class="website-title">Visit Valley Ranch</h1>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        <nav class="mobile-nav" aria-label="Main navigation">
+        <nav class="small-screen-nav" aria-label="Main navigation">
             <a href="../index.html">Home</a>
             <a href="../stories/stories.html">Stories</a>
-            <a id="currentTabSidebar" href="#">Historical Events</a>
+            <a id="currentTab" href="#">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
             <a href="../about/about.html">About</a>
             <a href="../search_bar/search.html">Have any Questions?</a>
@@ -31,22 +31,24 @@
     </header>
 
     <!-- Sidebar for Bigger Screens -->
-    <aside class="desktop-sidebar" aria-label="Main navigation">
+    <aside class="large-screen-sidebar" aria-label="Main navigation">
         <div class="sidebar-header">
             <img src="../../assets/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
-            <h1 class="site-title">Visit Valley Ranch</h1>
+            <h1 class="website-title">Visit Valley Ranch</h1>
         </div>
-        <nav class="desktop-nav">
+        <nav class="large-screen-nav">
             <a href="../index.html">Home</a>
             <a href="../stories/stories.html">Stories</a>
-            <a id="currentTabSidebar" href="#">Historical Events</a>
-            <a href="../about/about.html">About</a>
+            <a id="currentTabSidebar" href="#" aria-current="page">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
+            <a href="../about/about.html">About</a>
             <a href="../search_bar/search.html">Have any Questions?</a>
+            <a href="../log_in/log_in.html">Log In</a>
+            <a href="../sign_up/sign_up.html">Sign Up</a>
         </nav>
     </aside>
 
-    <!-- Overlay for mobile menu -->
+    <!-- Overlay for Dropdown Menu -->
     <div class="overlay" aria-hidden="true"></div>
 
     <main>

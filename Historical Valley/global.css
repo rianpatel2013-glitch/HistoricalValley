@@ -5,17 +5,18 @@
 }
 
 body {
-    background-color: #F4F7F7;
+    background-color: #66ca35;         /* Change This Line */
     margin: 0;
     padding: 0;
 }
 
-/* Main Content Styles */
+/* Main Content's Styles */
 main {
     margin-top: 3rem;
     padding: 0 2rem;
 }
 
+/* Heading Styles */
 main > h2,
 main > h3 {
     text-align: center;
