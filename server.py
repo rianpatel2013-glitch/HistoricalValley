@@ -10,10 +10,7 @@ FRONTEND_DIR = os.path.join(os.path.dirname(__file__), 'frontend')
 PAGES_DIR = os.path.join(FRONTEND_DIR, 'pages')
 IMAGES_DIR = os.path.join(os.path.dirname(__file__), 'images')
 BACKEND_DIR = os.path.join(os.path.dirname(__file__), 'backend')
-
-# --- NEW: Define the JSON file path within the BACKEND_DIR ---
 JSON_FILE_PATH = os.path.join(BACKEND_DIR, 'search.json')
-# -----------------------------------------------------------
 
 # Serve the root/home page
 @app.route('/')
@@ -38,7 +35,7 @@ def css(page_name, filename):
     page_folder = os.path.join(PAGES_DIR, page_name)
     return send_from_directory(page_folder, f'{filename}.css')
 
-# Serve JS files from specific pages
+# Serve JS files for specific pages
 @app.route('/<page_name>/<filename>.js')
 def js(page_name, filename):
     page_folder = os.path.join(PAGES_DIR, page_name)
@@ -58,7 +55,7 @@ def global_js():
 
 
 if __name__ == '__main__':
-    HOST = os.environ.get('FLASK_HOST', '0.0.0.0')
-    PORT = int(os.environ.get('FLASK_PORT', 9000))
+    PORT = int(os.environ.get('PORT', 9000))
+    HOST = '0.0.0.0'
 
     serve(app, host=HOST, port=PORT)
