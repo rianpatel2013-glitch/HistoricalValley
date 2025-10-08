@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI-Powered Search Bar</title>
+    <link rel="stylesheet" href="../../global.css">
+    <link rel="stylesheet" href="../../navbar.css">
+    <link rel="stylesheet" href="search.css">
+    <script src="../../navbar.js" defer></script>
+    <script src="search.js" defer></script>
+</head>
+<body>
+    <!-- Drop Down Menu for Small Screens -->
+    <header class="small-screen-header">
+        <div class="header-styles">
+            <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
+            <h1 class="website-title">Visit Valley Ranch</h1>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        <nav class="small-screen-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../stories/stories.html">Stories</a>
+            <a href="../historical_events/events.html">Historical Events</a>
+            <a href="../fun_facts/facts.html">Fun Facts</a>
+            <a href="../about/about.html">About</a>
+            <a id="currentTab" href="#">Have any Questions?</a>
+            <a href="../log_in/log_in.html">Log In</a>
+            <a href="../sign_up/sign_up.html">Sign Up</a>
+        </nav>
+    </header>
+
+    <!-- Sidebar for Bigger Screens -->
+    <aside class="large-screen-sidebar" aria-label="Main navigation">
+        <div class="sidebar-header">
+            <div class="sidebar-header-top">
+                <h1 class="website-title">Historical Valley</h1>
+                <button class="sidebar-toggle" aria-label="Close sidebar">✕</button>
+            </div>
+            <div class="sidebar-logo-container">
+                <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
+            </div>
+        </div>
+        <nav class="large-screen-nav">
+            <a href="../index.html">Home</a>
+            <a href="../stories/stories.html">Stories</a>
+            <a href="../historical_events/events.html">Historical Events</a>
+            <a href="../fun_facts/facts.html">Fun Facts</a>
+            <a href="../about/about.html">About</a>
+            <a id="currentTabSidebar" href="#" aria-current="page">Have any Questions?</a>
+            <a href="../log_in/log_in.html">Log In</a>
+            <a href="../sign_up/sign_up.html">Sign Up</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay for Dropdown Menu -->
+    <div class="overlay" aria-hidden="true"></div>
+
+    <main>
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <h1>AI-Powered Search Bar</h1>
+            </div>
+            
+            <div class="chat-container" id="chat">
+                <div class="empty-state">
+                    <p>Ask me any of your questions about Valley Ranch.</p>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="userInput" placeholder="Ask about Valley Ranch..." onkeypress="handleEnter(event)" />
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        
+        <!-- Chat Sidebar -->
+        <aside class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <button class="new-chat-btn" onclick="newChat()">
+                    <span>+</span> New Chat
+                </button>
+            </div>
+            <div class="conversation-list" id="conversationList">
+                <h3>Previous Conversations</h3>
+                <div class="conversation" onclick="loadChat(1)">Questions about Valley Ranch history</div>
+                <div class="conversation" onclick="loadChat(2)">Local attractions and events</div>
+                <div class="conversation" onclick="loadChat(3)">Community information</div>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

@@ -3,18 +3,18 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Search Bar</title> 
+    <title>About Valley Ranch</title> 
     <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="../../navbar.css">
-    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="about.css">
     <script src="../../navbar.js" defer></script>
-    <script src="search.js" defer></script>
+    <script src="about.js" defer></script>
 </head>
 <body>
     <!-- Drop Down Menu for Small Screens -->
     <header class="small-screen-header">
         <div class="header-styles">
-            <img src="../../assets/logo.png" alt="Hometown Hotspot Logo">
+            <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
             <h1 class="website-title">Visit Valley Ranch</h1>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
@@ -23,8 +23,8 @@
             <a href="../stories/stories.html">Stories</a>
             <a href="../historical_events/events.html">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
-            <a href="../about/about.html">About</a>
-            <a id="currentTab" href="#">Have any Questions?</a>
+            <a id="currentTab" href="#">About</a>
+            <a href="../search_bar/search.html">Have any Questions?</a>
             <a href="../log_in/log_in.html">Log In</a>
             <a href="../sign_up/sign_up.html">Sign Up</a>
         </nav>
@@ -33,16 +33,21 @@
     <!-- Sidebar for Bigger Screens -->
     <aside class="large-screen-sidebar" aria-label="Main navigation">
         <div class="sidebar-header">
-            <img src="../../assets/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
-            <h1 class="website-title">Visit Valley Ranch</h1>
+            <div class="sidebar-header-top">
+                <h1 class="website-title">Historical Valley</h1>
+                <button class="sidebar-toggle" aria-label="Close sidebar">✕</button>
+            </div>
+            <div class="sidebar-logo-container">
+                <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
+            </div>
         </div>
         <nav class="large-screen-nav">
             <a href="../index.html">Home</a>
             <a href="../stories/stories.html">Stories</a>
             <a href="../historical_events/events.html">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
-            <a href="../about/about.html">About</a>
-            <a id="currentTabSidebar" href="#" aria-current="page">Have any Questions?</a>
+            <a id="currentTab" href="#">About</a>
+            <a href="../search_bar/search.html">Have any Questions?</a>
             <a href="../log_in/log_in.html">Log In</a>
             <a href="../sign_up/sign_up.html">Sign Up</a>
         </nav>
@@ -52,6 +57,19 @@
     <div class="overlay" aria-hidden="true"></div>
 
     <main>
+    <!-- ...existing content... -->
+    <h2>"Explore the History, Culture, and Voices of Our Community"</h2>
+    <h3>Welcome to our digital showcase of <em><b>Hometown Hotspot</b></em>. This site highlights the people, places, and<br>
+        moments that have shaped our town through the years. Whether you're a lifelong resident or a first-time<br>
+        visitor, we invite you to explore the stories that make our community special.<br>
+    </h3>
+    </main>
+</body>
+</html>
+    <h3>Welcome to our digital showcase of <em><b>Hometown Hotspot</b></em>. This site highlights the people, places, and<br>
+        moments that have shaped our town through the years. Whether you're a lifelong resident or a first-time<br>
+        visitor, we invite you to explore the stories that make our community special.<br>
+    </h3>
     </main>
 </body>
 </html>

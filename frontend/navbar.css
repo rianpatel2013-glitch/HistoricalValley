@@ -16,7 +16,8 @@
 
 /* Logo Styles */
 .header-styles img,
-.sidebar-header img {
+.sidebar-header img,
+.sidebar-title-container img {
     width: auto;
     object-fit: contain;
     max-width: 100%;
@@ -27,27 +28,24 @@
     max-height: fit-content;
 }
 
-/* Logo Hover State */
 .header-styles img:hover,
-.sidebar-header img:hover {
+.large-screen-sidebar .sidebar-title-container img:hover {
     opacity: 0.8;
     transform: scale(1.02);
     cursor: pointer;
 }
 
-/* Logo Sizing for Small Screens */
 .header-styles img {
     height: clamp(3rem, 7vw, 4.5rem);
     min-height: 3.5rem;
     min-width: 3.5rem;
 }
 
-/* Large Screen Sidebar Logo Sizing */
-.sidebar-header img {
-    height: 8.5rem;
+.large-screen-sidebar .sidebar-title-container img {
+    height: 3.5rem;
 }
 
-/* Header Styles */
+/* Small Screen Header */
 .small-screen-header {
     background-color: #1F4E5F;
     padding: 0.4rem 1.5rem;
@@ -69,25 +67,13 @@
     position: relative;
 }
 
-/* Center title between logo and menu button until stacking */
 .header-styles:not(.stacked) .website-title {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    min-width: 3.5rem !important;
-    min-height: 3.5rem !important;
-    max-width: calc(100% - 7rem);
-    white-space: nowrap;
+    flex: 1;
     text-align: center;
-    z-index: 1;
+    position: static;
+    transform: none;
 }
 
-/* Remove absolute centering and use column layout when stacked */
 .header-styles.stacked {
     flex-direction: column;
     gap: 0.2rem;
@@ -110,7 +96,7 @@
     text-align: center;
 }
 
-/* Small Screen Menu Button */
+/* Menu Toggle */
 .menu-toggle {
     background: none;
     border: 2px solid transparent;
@@ -128,7 +114,14 @@
     justify-content: center;
 }
 
-/* Small Screen Navigation Menu */
+.menu-toggle:hover,
+.menu-toggle:focus {
+    color: #79A8A9;
+    border-color: #79A8A9;
+    outline: none;
+}
+
+/* Small Screen Navigation */
 .small-screen-nav {
     position: absolute;
     top: 100%;
@@ -164,20 +157,62 @@
     background-color: rgba(121, 168, 169, 0.1);
 }
 
-/* Small Screen Menu Toggle */
-.menu-toggle:hover,
-.menu-toggle:focus {
-    color: #79A8A9;
-    border-color: #79A8A9;
-    outline: none;
-}
-
-/* Large Screen Sidebar Styles */
+/* Large Screen Sidebar Navigation */
 .large-screen-sidebar {
     display: none;
 }
 
-/* Current Tab Styles */
+/* Sidebar Header */
+.sidebar-toggle {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar-toggle:hover,
+.sidebar-toggle:focus {
+    background-color: rgba(121, 168, 169, 0.2);
+    color: #79A8A9;
+    outline: none;
+}
+
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* full width for top row */
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.sidebar-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.sidebar-logo-container img {
+    height: 2.5rem;
+    width: auto;
+    cursor: pointer;
+}
+
+.large-screen-sidebar .website-title {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin: 0;
+}
+
 #currentTab, #currentTabSidebar {
     background-color: #79A8A9 !important;
     color: #1F4E5F !important;
@@ -205,10 +240,6 @@
     .small-screen-header {
         min-height: 4rem;
         padding: 0.1rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
     }
 
     .small-screen-header.stacked-header {
@@ -222,7 +253,6 @@
         position: relative;
     }
 
-    /* Title centered between logo and menu button */
     .website-title {
         font-size: clamp(1.2rem, 4vw, 2rem);
         position: absolute;
@@ -235,7 +265,6 @@
         padding: 0 0.5rem;
     }
 
-    /* When stacked, ensure proper sizing */
     .header-styles.stacked {
         align-items: center;
         text-align: center;
@@ -268,28 +297,45 @@
     .large-screen-sidebar {
         display: block;
         position: fixed;
-        right: 0;
+        left: 0;
         top: 0;
         width: 280px;
         height: 100vh;
         background-color: #1F4E5F;
-        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         overflow-y: auto;
+        transition: transform 0.3s ease;
     }
 
-    .sidebar-header {
-        padding: 1.5rem 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        text-align: center;
+    .large-screen-sidebar.collapsed {
+        transform: translateX(-220px);
+    }
+
+    .large-screen-sidebar .sidebar-toggle {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
 
-    /* Ensure sidebar logo sizing for large screens */
-    .sidebar-header img {
+    .large-screen-sidebar .sidebar-header {
+        display: flex;
+    }
+
+    .large-screen-sidebar .sidebar-header .sidebar-toggle {
+        display: flex;
+    }
+
+    .large-screen-sidebar .website-title {
+        font-size: 1.8rem;
+        margin: 0;
+        padding: 0;
+        padding-right: 3rem;
+        min-height: auto;
+        flex: 1;
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .large-screen-sidebar .sidebar-header img {
         height: 8.5rem;
         width: auto;
         max-width: 100%;
@@ -298,7 +344,7 @@
         margin: 0;
     }
 
-    .sidebar-header .website-title {
+    .large-screen-sidebar .sidebar-header .website-title {
         font-size: 2.1rem;
         margin-top: 0.7rem;
         margin-bottom: 0;
@@ -322,7 +368,7 @@
         font-weight: 500;
         font-size: 1rem;
         padding: 1rem 1.5rem;
-        border-right: 3px solid transparent;
+        border-left: 3px solid transparent;
         transition: all 0.3s ease;
     }
 
@@ -330,11 +376,16 @@
     .large-screen-nav a:focus {
         background-color: rgba(121, 168, 169, 0.1);
         color: #79A8A9;
-        border-right-color: #79A8A9;
+        border-left-color: #79A8A9;
         outline: none;
     }
 
-    body {
-        margin-right: 280px;
+    body main {
+        margin-left: 280px;
+        transition: margin-left 0.3s ease;
+    }
+
+    .large-screen-sidebar.collapsed ~ main {
+        margin-left: 0;
     }
 }

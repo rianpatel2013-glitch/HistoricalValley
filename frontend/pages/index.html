@@ -14,7 +14,7 @@
     <!-- Drop Down Menu for Small Screens -->
     <header class="small-screen-header">
         <div class="header-styles">
-            <img src="../assets/logo.png" alt="Hometown Hotspot Logo">
+            <img src="../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
             <h1 class="website-title">Visit Valley Ranch</h1>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
@@ -33,8 +33,13 @@
     <!-- Sidebar for Bigger Screens -->
     <aside class="large-screen-sidebar" aria-label="Main navigation">
         <div class="sidebar-header">
-            <img src="../assets/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
-            <h1 class="website-title">Visit Valley Ranch</h1>
+            <div class="sidebar-header-top">
+                <h1 class="website-title">Historical Valley</h1>
+                <button class="sidebar-toggle" aria-label="Close sidebar">✕</button>
+            </div>
+            <div class="sidebar-logo-container">
+                <img src="../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='#'">
+            </div>
         </div>
         <nav class="large-screen-nav">
             <a id="currentTabSidebar" href="#" aria-current="page">Home</a>

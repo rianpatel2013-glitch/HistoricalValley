@@ -1,7 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
-    
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.small-screen-nav');
     const overlay = document.querySelector('.overlay');
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Toggle dropdown menu
     function toggleDropdownMenu() {
         checkHeaderFit();
         const isOpen = nav.classList.contains('show');
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         menuToggle.setAttribute('aria-expanded', newState.toString());
     }
 
-    // Close the dropdown menu
     function closeDropdownMenu() {
         nav.classList.remove('show');
         overlay.classList.remove('show');
@@ -65,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeDropdownMenu();
         });
     });
-    
-    // Responsive header
+
     function checkHeaderFit() {
         if (window.innerWidth > 768) return;
 
@@ -84,16 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const logoRect = logo.getBoundingClientRect();
         const titleRect = title.getBoundingClientRect();
-        const headerRect = smallScreenHeader.getBoundingClientRect();
 
         const gap = titleRect.left - (logoRect.right);
-
         const minTitleWidth = parseFloat(getComputedStyle(title).minWidth) || 56;
 
-        if (
-            title.offsetWidth <= minTitleWidth + 1 ||
-            gap < 8
-        ) {
+        if (title.offsetWidth <= minTitleWidth + 1 || gap < 8) {
             headerStyles.classList.add('stacked');
             smallScreenHeader.classList.add('stacked-header');
         } else if (wasStacked) {
@@ -122,8 +113,32 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth > 768) {
             closeDropdownMenu();
         }
-
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(checkHeaderFit, 100);
     });
+
+    // Large screen sidebar toggle functionality
+    const sidebar = document.querySelector('.large-screen-sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    
+    if (sidebar && sidebarToggle) {
+        // Sidebar is open by default (no collapsed class)
+        
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('collapsed');
+            
+            // Update button icon
+            if (sidebar.classList.contains('collapsed')) {
+                sidebarToggle.textContent = '☰';
+                sidebarToggle.setAttribute('aria-label', 'Open sidebar');
+            } else {
+                sidebarToggle.textContent = '✕';
+                sidebarToggle.setAttribute('aria-label', 'Close sidebar');
+            }
+        });
+        
+        // Set initial button state (sidebar is open)
+        sidebarToggle.textContent = '✕';
+        sidebarToggle.setAttribute('aria-label', 'Close sidebar');
+    }
 });
