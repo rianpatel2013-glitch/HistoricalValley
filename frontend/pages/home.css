@@ -10,6 +10,39 @@
     text-align: center;
     position: relative;
     color: #002938;
-    font-weight: 300;
+    font-weight: 540;
     margin-top: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.significantBox {
+    border-radius: 5px;
+    background-color: #79A8A9;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+}
+
+.significantPlaceImg {
+    width: 20vw;
+    border-radius: 5px;
+}
+
+.tag > h2 {
+    position: relative;
+    color: #002938;
+    font-weight: 540;
+    font-size: 1.8rem;
+}
+
+.tag > p {
+     position: relative;
+    color: #002938;
+    font-weight: 100;
+    font-size: 1.4rem;
+}
+
+.tag {
+    margin: 1em;
 }
