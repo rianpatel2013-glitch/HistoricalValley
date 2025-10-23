@@ -10,28 +10,28 @@ client = genai.Client(api_key=os.getenv("Gemini_api_key"))
 model = "gemini-2.5-flash"
 
 tools = [
-    Tool(url_context=UrlContext()),
+    # Tool(url_context=UrlContext()),
     Tool(google_search=GoogleSearch())
 ]
 
-urls = [
-    "https://www.valleyranch.org",
-    "https://www.cypresswaters.com/",
-    "https://irvingchamber.com/resources-and-tools/irving-area-maps/valley-ranch/",
-    "https://www.irvingtexas.com/plan-your-visit/about-irving/valley-ranch/",
-    "https://statisticalatlas.com/neighborhood/Texas/Irving/Valley-Ranch/Overview",
-    "https://www.trulia.com/n/tx/irving/valley-ranch/90246/",
-    "https://www.irvingtexas.com/plan-your-visit/about-irving/history/"
-]
+# urls = [
+#     "https://www.valleyranch.org",
+#     "https://www.cypresswaters.com/",
+#     "https://irvingchamber.com/resources-and-tools/irving-area-maps/valley-ranch/",
+#     "https://www.irvingtexas.com/plan-your-visit/about-irving/valley-ranch/",
+#     "https://statisticalatlas.com/neighborhood/Texas/Irving/Valley-Ranch/Overview",
+#     "https://www.trulia.com/n/tx/irving/valley-ranch/90246/",
+#     "https://www.irvingtexas.com/plan-your-visit/about-irving/history/"
+# ]
 
 instructions = (
     "You are a knowledgeable research assistant.\n\n"
-    "Use the following URLs as your **primary sources** for any question related to Valley Ranch:\n"
-    + "\n".join(urls)
-    + "\n\nIf the information is not sufficient in these URLs, you MUST automatically use Google Search to find reliable information."
-    + "\nAlways include citations for any URLs used, whether from the provided URLs or from Google Search results."
+    # "Use the following URLs as your **primary sources** for any question related to Valley Ranch:\n"
+    # + "\n".join(urls)
+    # + "\n\nIf the information is not sufficient in these URLs, you MUST automatically use Google Search to find reliable information."
+    # + "\nAlways include citations for any URLs used, whether from the provided URLs or from Google Search results."
     + "\nDo not ask the user for permission to search. Always answer using the tools if needed."
-    + "\nIf the user's question is unrelated to Valley Ranch, clearly state that and then answer using Google Search."
+    + "\nIf the user's question is unrelated to Valley Ranch, clearly state that but still  answer using Google Search."
     + "\nNEVER provide your thinking process or internal deliberations in your response. Just provide the final answer with citations."
     + "\nNever use Wikipedia as a source."
 )
