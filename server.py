@@ -41,11 +41,18 @@ def js(page_name, filename):
     page_folder = os.path.join(PAGES_DIR, page_name)
     return send_from_directory(page_folder, f'{filename}.js')
 
-# Serve global CSS files and the home page's CSS file
+# Serve home.css and home.js from pages directory
+@app.route('/home.css')
+def home_css():
+    return send_from_directory(PAGES_DIR, 'home.css')
+
+@app.route('/home.js')
+def home_js():
+    return send_from_directory(PAGES_DIR, 'home.js')
+
+# Serve global CSS files (global.css and navbar.css)
 @app.route('/<filename>.css')
 def global_css(filename):
-    if filename == 'home':
-        return send_from_directory(PAGES_DIR, 'home.css')
     return send_from_directory(FRONTEND_DIR, f'{filename}.css')
 
 # Serve the global JS file

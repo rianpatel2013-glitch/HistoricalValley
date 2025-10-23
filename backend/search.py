@@ -1,96 +1,76 @@
+from flask import request, jsonify
 from google import genai
+from google.genai.types import Tool, GenerateContentConfig, GoogleSearch, UrlContext
 from dotenv import load_dotenv
 import os
 import json
 
 load_dotenv()
-client = genai.Client(os.getenv("API_KEY"))
+client = genai.Client(api_key=os.getenv("Gemini_api_key"))
 model = "gemini-2.5-flash"
-contents = (
-	f"Use the provided URL contents to answer the user's question."
-	f"Only if the information cannot be found in the provided contexts, search the web for reliable sources and use their info.\n\n"
-	f"Always cite the source URLs.\n\n"
+
+tools = [
+    Tool(url_context=UrlContext()),
+    Tool(google_search=GoogleSearch())
+]
+
+urls = [
+    "https://www.valleyranch.org",
+    "https://www.cypresswaters.com/",
+    "https://irvingchamber.com/resources-and-tools/irving-area-maps/valley-ranch/",
+    "https://www.irvingtexas.com/plan-your-visit/about-irving/valley-ranch/",
+    "https://statisticalatlas.com/neighborhood/Texas/Irving/Valley-Ranch/Overview",
+    "https://www.trulia.com/n/tx/irving/valley-ranch/90246/",
+    "https://www.irvingtexas.com/plan-your-visit/about-irving/history/"
+]
+
+instructions = (
+    "You are a knowledgeable research assistant.\n\n"
+    "You have access to two tools: 'url_context' and 'google_search'.\n"
+    "Use the following URLs as your **primary sources** for any question related to Valley Ranch:\n"
+    + "\n".join(urls)
+    + "\n\nIf the information is not sufficient in these URLs, you MUST automatically use Google Search to find reliable information."
+    + "\nAlways include citations for any URLs used, whether from the provided URLs or from Google Search results."
+    + "\nDo not ask the user for permission to search. Always answer using the tools if needed."
+    + "\nIf the user's question is unrelated to Valley Ranch, first indicate clearly: "
+      "'This question is not related to Valley Ranch. I will answer using reliable online sources.' "
+      "Then automatically use Google Search and cite the sources."
+    + "\n**Never use Wikipedia as a source under any circumstances.**"
 )
-load_prompt_json = os.path.join(os.path.dirname(__file__), "search.json")
-try:
-	with open(load_prompt_json, "r", encoding="utf-8") as f:
-		prompt_data = json.load(f)
-		query = prompt_data.get("prompt", "")
-except (FileNotFoundError, json.JSONDecodeError):
-	query = "What's Valley Ranch's history?"
 
-response = client.models.generate_content(
-    model = model,
-	contents = contents + query,
+chat = client.chats.create(
+    model=model,
+    config=GenerateContentConfig(
+        tools=tools,
+        system_instruction=instructions
+    )
 )
 
-print(response.text) # For Now
+SEARCH_FILE = os.path.join(os.path.dirname(__file__), "search.json")
 
-# Old Code had a bug that wasn't fixing (forgot where in the Gemini API Docs I got it), so decided to try my own apporach
+def generate_response():
+    """Handles POST requests: reads user prompt, sends to Gemini, saves to search.json"""
+    data = request.get_json(silent=True) or {}
+    query = data.get("prompt", "")
 
-# def answer_query(query: str, urls: list[str], use_search: bool = True) -> dict:
-# 	"""
-# 	Use provided URLs (and optional GoogleSearch) to answer `query`.
-# 	Returns a dict with 'answer' and 'url_context_metadata'.
-# 	"""
-# 	# Build tools: include UrlContext with the provided URLs
-# 	tools = []
-# 	if urls:
-# 		tools.append(Tool(url_context=UrlContext(urls=urls)))
-# 	# Optionally include GoogleSearch tool
-# 	if use_search:
-# 		tools.append(Tool(google_search=GoogleSearch()))
+    if not query:
+        return jsonify({"error": "No prompt provided"}), 400
 
-# 	# Instruct the model to rely on the provided URL contexts
+    user_input = f"User's question: {query}"
+    res = chat.send_message(user_input)
 
-# 	response = client.models.generate_content(
-# 		model=model_id,
-# 		contents=contents,
-# 		config=GenerateContentConfig(tools=tools),
-# 	)
+    # Save the AI response to search.json
+    with open(SEARCH_FILE, "w", encoding="utf-8") as f:
+        json.dump({"response": res.text}, f, ensure_ascii=False, indent=2)
 
-# 	# Aggregate text parts
-# 	answer_parts = []
-# 	for part in response.candidates[0].content.parts:
-# 		answer_parts.append(part.text)
-# 	answer_text = "\n".join(answer_parts)
+    return jsonify({"message": "Processing complete", "response": res.text})
 
-# 	return {
-# 		"answer": answer_text,
-# 		"url_context_metadata": response.candidates[0].url_context_metadata,
-# 		"raw_response": response,
-# 	}
 
-# # Example usage when run as a script
-# if __name__ == "__main__":
-# 	YOUR_URL = "https://irvingchamber.com/resources-and-tools/irving-area-maps/valley-ranch/"
+def get_response():
+    if not os.path.exists(SEARCH_FILE):
+        return jsonify({"response": None, "message": "No response yet"}), 404
 
-# 	# Load query from JSON file next to this script (query.json)
-# 	config_path = os.path.join(os.path.dirname(__file__), "query.json")
-# 	query = ""
-# 	try:
-# 		with open(config_path, "r", encoding="utf-8") as f:
-# 			data = json.load(f)
-# 			query = data.get("query", "")
-# 	except (FileNotFoundError, json.JSONDecodeError):
-# 		# fallback to empty query (or you can set a default here)
-# 		query = ""
+    with open(SEARCH_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-# 	result = answer_query(query, [YOUR_URL])
-# 	print(result["answer"])
-# 	print(result["url_context_metadata"])
-# 	print(result["answer"])
-# 	print(result["url_context_metadata"])
-# 	try:
-# 		with open(config_path, "r", encoding="utf-8") as f:
-# 			data = json.load(f)
-# 			query = data.get("query", "")
-# 	except (FileNotFoundError, json.JSONDecodeError):
-# 		# fallback to empty query (or you can set a default here)
-# 		query = ""
-
-# 	result = answer_query(query, [YOUR_URL])
-# 	print(result["answer"])
-# 	print(result["url_context_metadata"])
-# 	print(result["answer"])
-# 	print(result["url_context_metadata"])
+    return jsonify(data)

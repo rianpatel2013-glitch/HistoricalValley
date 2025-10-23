@@ -1,0 +1,73 @@
+main {
+    display: flex;
+}
+
+/* Container for the three sections - uses Flexbox */
+.info-sections-container {
+    display: flex;
+    gap: clamp(10px, 2vw, 20px); 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: clamp(15px, 3vw, 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%; 
+    margin: clamp(10px, 2vw, 20px);
+}
+
+/* Individual Info Section (the columns) */
+.info-section {
+    flex: 1 1 250px; 
+    min-width: min(250px, 100%); 
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 15px); 
+}
+
+/* Title box for each section */
+.section-title {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: clamp(8px, 1.5vw, 10px) clamp(10px, 2vw, 15px);
+    text-align: center;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Placeholder for the image */
+.image-placeholder {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: clamp(30px, 5vw, 50px) clamp(8px, 1.5vw, 10px); 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: clamp(100px, 20vw, 150px); 
+    color: #666;
+    font-style: italic;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+}
+
+/* Placeholder for the text section box */
+.text-section-placeholder {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
+    text-align: center;
+    font-weight: normal;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+
+/* Media query for responsiveness (stacks columns on smaller screens) */
+@media (max-width: 850px) {
+    .info-sections-container {
+        flex-direction: column;
+    }
+
+    .info-section {
+        min-width: 100%; 
+    }
+}

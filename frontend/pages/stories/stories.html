@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
+    <title>Valley Ranch's Stories</title>
     <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Valley Ranch's Stories</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="../../global.css">
     <link rel="stylesheet" href="../../navbar.css">
     <link rel="stylesheet" href="stories.css">
@@ -11,27 +12,33 @@
     <script src="stories.js" defer></script>
 </head>
 <body>
+
     <!-- Drop Down Menu for Small Screens -->
-    <header class="small-screen-header">
+    <header class="drop_down-header">
+
         <div class="header-styles">
             <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
             <h1 class="website-title">Visit Valley Ranch</h1>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-        <nav class="small-screen-nav" aria-label="Main navigation">
+
+        <nav class="drop_down-nav" aria-label="Main navigation">
             <a href="../index.html">Home</a>
-            <a id="currentTab" href="#">Stories</a>
+            <a id="currentTab" href="#" aria-current="page">Stories</a>
             <a href="../historical_events/events.html">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
             <a href="../about/about.html">About</a>
-            <a href="../search_bar/search.html">Have any Questions?</a>
+            <a href="../search_bar/search.html">
+                <span class="material-symbols-outlined search-icon">Search</span>
+            </a>
             <a href="../log_in/log_in.html">Log In</a>
             <a href="../sign_up/sign_up.html">Sign Up</a>
         </nav>
     </header>
 
     <!-- Sidebar for Bigger Screens -->
-    <aside class="large-screen-sidebar" aria-label="Main navigation">
+    <aside class="sidebar" aria-label="Main navigation">
+
         <div class="sidebar-header">
             <div class="sidebar-header-top">
                 <h1 class="website-title">Historical Valley</h1>
@@ -41,22 +48,30 @@
                 <img src="../../../images/logo.png" alt="Hometown Hotspot Logo" onclick="location.href='../index.html'">
             </div>
         </div>
-        <nav class="large-screen-nav">
+
+        <nav class="sidebar-nav">
             <a href="../index.html">Home</a>
-            <a id="currentTabSidebar" href="#" aria-current="page">Stories</a>
+            <a id="currentTab" href="#" aria-current="page">Stories</a>
             <a href="../historical_events/events.html">Historical Events</a>
             <a href="../fun_facts/facts.html">Fun Facts</a>
             <a href="../about/about.html">About</a>
-            <a href="../search_bar/search.html">Have any Questions?</a>
-            <a href="../log_in/log_in.html">Log In</a>
-            <a href="../sign_up/sign_up.html">Sign Up</a>
+            <div class="bottom-nav-links">
+                <a href="../search_bar/search.html">
+                    <span class="material-symbols-outlined search-icon">Search</span>
+                </a>
+                <a href="../log_in/log_in.html">Log In</a>
+                <a href="../sign_up/sign_up.html">Sign Up</a>
+            </div>
         </nav>
+
     </aside>
 
     <!-- Overlay for Dropdown Menu -->
     <div class="overlay" aria-hidden="true"></div>
 
     <main>
+
     </main>
+
 </body>
 </html>

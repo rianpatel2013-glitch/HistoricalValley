@@ -1,6 +1,5 @@
 /* Map Styles */
 #map {
-    background-color: #79A8A9;
     padding: 20px;
     border-radius: 5px;
     margin-top: 2rem;
@@ -25,7 +24,9 @@
 }
 
 .significantPlaceImg {
-    width: 20vw;
+    min-width: 400px;
+    max-width: 400px;
+    height: 400px;
     border-radius: 5px;
 }
 
@@ -45,4 +46,16 @@
 
 .tag {
     margin: 1em;
+}
+
+@media screen and (max-width: 1290px) {
+  /* CSS rules for screens less than 768px wide */
+  .significantBox {
+    border-radius: 5px;
+    background-color: #79A8A9;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
 }

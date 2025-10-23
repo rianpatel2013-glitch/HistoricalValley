@@ -1,13 +1,17 @@
+'use strict';
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const smallScreenNav = document.querySelector('.small-screen-nav');
+    const smallScreenNav = document.querySelector('.drop_down-nav');
     const overlay = document.querySelector('.overlay');
     const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const sidebar = document.querySelector('.large-screen-sidebar');
+    const sidebar = document.querySelector('.sidebar');
     const body = document.body;
     const headerStyles = document.querySelector('.header-styles');
     const websiteTitle = document.querySelector('.website-title');
-    const smallScreenHeader = document.querySelector('.small-screen-header');
+    const smallScreenHeader = document.querySelector('.drop_down-header');
+
 
     // Toggle Mobile Menu
     if (menuToggle) {
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body.style.overflow = isOpen ? 'hidden' : '';
         });
     }
+
 
     // Close mobile menu when user clicks outside of it
     if (overlay) {
@@ -30,10 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+
+
     // Stack Title
     function checkTitleStacking() {
         if (!headerStyles || !websiteTitle || !smallScreenHeader) return;
-        
+       
         if (window.innerWidth > 768) {
             headerStyles.classList.remove('stacked');
             smallScreenHeader.classList.remove('stacked-header');
@@ -41,14 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const computedStyle = window.getComputedStyle(websiteTitle);
+
         const fontSize = parseFloat(computedStyle.fontSize);
-        
+       
         const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
-        
+       
         const minFontSize = 1.5 * rootFontSize;
-        
+       
         const tolerance = 0.5;
-    
+   
         if (fontSize <= minFontSize + tolerance) {
             headerStyles.classList.add('stacked');
             smallScreenHeader.classList.add('stacked-header');
@@ -58,15 +66,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
     checkTitleStacking();
-    
+   
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(checkTitleStacking, 100);
     });
 
+
     if (document.fonts) {
         document.fonts.ready.then(checkTitleStacking);
+    }
+
+
+    // Open and Close sidebar
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.textContent = '✕';
+        
+        sidebarToggle.setAttribute('aria-label', 'Close sidebar');
+       
+        sidebarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            sidebar.classList.toggle('collapsed');
+           
+            if (sidebar.classList.contains('collapsed')) {
+                sidebarToggle.textContent = '☰';
+                sidebarToggle.setAttribute('aria-label', 'Open sidebar');
+            } else {
+                sidebarToggle.textContent = '✕';
+                sidebarToggle.setAttribute('aria-label', 'Close sidebar');
+            }
+        });
     }
 });
