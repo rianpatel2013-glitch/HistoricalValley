@@ -1,0 +1,10 @@
+.fun-facts {
+    padding: 20px 10px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 300;
+}
+
+.fact {
+    margin-top: 15px;
+    margin-left: 25px;
+}

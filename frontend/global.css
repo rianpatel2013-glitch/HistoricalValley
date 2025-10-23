@@ -25,16 +25,27 @@ main::-webkit-scrollbar {
 }
 
 /* Page Heading Styles */
-h1 {
+h1, h2 {
     text-align: center;
     color: #ffffff;
     font-weight: 400;
     font-size: 2.5rem;
 }
 
-.chat-header {
+.page-header {
     padding: 0.65rem;
     background-color: #183518;
     border-bottom: 2px solid #2f4f2f;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    min-width: 100vh;
+}
+
+.introduction {
+    margin: 10px 10px;
+    margin-bottom: 20px;
+}
+
+.introduction h2 {
+    text-align: left;
+    font-size: 2rem;
 }

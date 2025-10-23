@@ -1,11 +1,13 @@
-from flask import Flask, send_from_directory, send_file, jsonify, request
+from flask import Flask, send_from_directory, send_file
 from waitress import serve
-import json
+from flask_cors import CORS
 import os
 
-app = Flask(__name__)
+from backend.search import chat_post, chat_get
 
-# Set the directories
+app = Flask(__name__)
+CORS(app)
+
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), 'frontend')
 PAGES_DIR = os.path.join(FRONTEND_DIR, 'pages')
 IMAGES_DIR = os.path.join(os.path.dirname(__file__), 'images')
@@ -60,9 +62,16 @@ def global_css(filename):
 def global_js():
     return send_from_directory(FRONTEND_DIR, 'navbar.js')
 
+# AI Chat API
+@app.route('/api/chat', methods=['POST'])
+def api_chat_post():
+    return chat_post()
+
+@app.route('/api/chat', methods=['GET'])
+def api_chat_get():
+    return chat_get()
 
 if __name__ == '__main__':
-    PORT = int(os.environ.get('PORT', 9000))
+    PORT = int(os.environ.get('PORT', 8000))
     HOST = '0.0.0.0'
-
     serve(app, host=HOST, port=PORT)

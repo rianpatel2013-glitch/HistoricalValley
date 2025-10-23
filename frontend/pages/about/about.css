@@ -1,24 +1,21 @@
-main {
-    display: flex;
-}
-
-/* Container for the three sections - uses Flexbox */
+/* Container for the three sections */
 .info-sections-container {
     display: flex;
     gap: clamp(10px, 2vw, 20px); 
     flex-wrap: wrap; 
     justify-content: space-between; 
-    border: 1px solid #000000;
-    border-radius: 10px;
     padding: clamp(15px, 3vw, 20px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 100%; 
-    margin: clamp(10px, 2vw, 20px);
+    margin: 10px 0px !important;
 }
 
 /* Individual Info Section (the columns) */
 .info-section {
+    padding: clamp(15px, 3vw, 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    border-radius: 10px;
     flex: 1 1 250px; 
     min-width: min(250px, 100%); 
     display: flex;
@@ -56,9 +53,23 @@ main {
     border: 1px solid #000000;
     border-radius: 8px;
     padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
-    text-align: center;
     font-weight: normal;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+
+.bulleted_list {
+    list-style-type: disc;
+    padding-left: 20px; 
+}
+
+.source {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}
+
+.source:hover {
+    color:#79A8A9;
 }
 
 /* Media query for responsiveness (stacks columns on smaller screens) */

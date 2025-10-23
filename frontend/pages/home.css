@@ -1,17 +1,12 @@
-/* Map Styles */
-#map {
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 2rem;
+h1 {
+    font-weight: 600;
+    font-size: 3rem;
 }
 
-#map > h2 {
-    text-align: center;
-    position: relative;
-    color: #002938;
-    font-weight: 540;
-    margin-top: 0.5rem;
-    font-size: 1.8rem;
+.introduction > p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 .significantBox {
@@ -48,14 +43,30 @@
     margin: 1em;
 }
 
-@media screen and (max-width: 1290px) {
-  /* CSS rules for screens less than 768px wide */
-  .significantBox {
-    border-radius: 5px;
-    background-color: #79A8A9;
+/* Map Styles */
+#map {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-  }
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+#map > h2 {
+    text-align: center;
+    position: relative;
+    color: #002938;
+    font-weight: 540;
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .significantBox {
+        border-radius: 5px;
+        background-color: #79A8A9;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
 }
