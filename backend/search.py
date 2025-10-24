@@ -34,6 +34,7 @@ instructions = (
     + "\nIf the user's question is unrelated to Valley Ranch, clearly state that but still  answer using Google Search."
     + "\nNEVER provide your thinking process or internal deliberations in your response. Just provide the final answer with citations."
     + "\nNever use Wikipedia as a source."
+    + "\nonly give valley ranch inof "
 )
 
 # Create chat session globally
