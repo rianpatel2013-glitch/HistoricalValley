@@ -10,7 +10,7 @@ CORS(app)
 
 FRONTEND_DIR = os.path.join(os.path.dirname(__file__), 'frontend')
 PAGES_DIR = os.path.join(FRONTEND_DIR, 'pages')
-IMAGES_DIR = os.path.join(os.path.dirname(__file__), 'images')
+IMAGES_DIR = os.path.join(FRONTEND_DIR, 'images')
 BACKEND_DIR = os.path.join(os.path.dirname(__file__), 'backend')
 JSON_FILE_PATH = os.path.join(BACKEND_DIR, 'search.json')
 
@@ -21,7 +21,7 @@ def index():
     return send_file(os.path.join(PAGES_DIR, 'index.html'))
 
 # Serve images
-@app.route('/pages/images/<path:filename>')
+@app.route('/images/<path:filename>')
 def images(filename):
     return send_from_directory(IMAGES_DIR, filename)
 
