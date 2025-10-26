@@ -21,7 +21,7 @@ def index():
     return send_file(os.path.join(PAGES_DIR, 'index.html'))
 
 # Serve images
-@app.route('/images/<path:filename>')
+@app.route('/pages/images/<path:filename>')
 def images(filename):
     return send_from_directory(IMAGES_DIR, filename)
 
