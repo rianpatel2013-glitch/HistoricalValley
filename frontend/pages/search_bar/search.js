@@ -1,8 +1,16 @@
 'use strict';
 
 (function () {
+    // Generate unique session ID for this chat
+    let currentSessionId = generateSessionId();
+
     const input = () => document.getElementById("userInput");
     const chat = () => document.getElementById("chat");
+
+    // Generate a unique session ID
+    function generateSessionId() {
+        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
 
     // Append a message to chat
     function appendMessage(sender, text, id = null) {
@@ -44,7 +52,10 @@
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prompt: value }),
+                body: JSON.stringify({ 
+                    prompt: value,
+                    session_id: currentSessionId  // Send session ID
+                }),
             });
 
             if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
@@ -72,9 +83,14 @@
         }
     };
 
-    // New chat
+    // New chat - creates a fresh session
     window.newChat = function newChat() {
+        // Generate new session ID for new conversation
+        currentSessionId = generateSessionId();
+        
+        // Clear the chat display
         chat().innerHTML = '<div class="empty-state"><p>Ask me any of your questions about Valley Ranch.</p></div>';
-        let 
+        
+        console.log('Started new chat with session:', currentSessionId);
     };
 })();
