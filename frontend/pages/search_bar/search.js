@@ -89,7 +89,7 @@
         currentSessionId = generateSessionId();
         
         // Clear the chat display
-        chat().innerHTML = '<div class="empty-state"><p>Ask me any of your questions about Valley Ranch.</p></div>';
+        chat().innerHTML = '<div class="empty-state"><p>Ask AI any of your questions about Valley Ranch</p></div>';
         
         console.log('Started new chat with session:', currentSessionId);
     };

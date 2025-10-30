@@ -16,7 +16,6 @@ tools = [
  
 urls = [ 
     "https://www.valleyranch.org", 
-    "https://www.cypresswaters.com/", 
     "https://irvingchamber.com/resources-and-tools/irving-area-maps/valley-ranch/", 
     "https://www.irvingtexas.com/plan-your-visit/about-irving/valley-ranch/", 
     "https://statisticalatlas.com/neighborhood/Texas/Irving/Valley-Ranch/Overview", 
@@ -31,7 +30,8 @@ instructions = (
     + "\n\nIf the information is not sufficient in these URLs, you MUST automatically use Google Search to find reliable information." 
     + "\nAlways include citations for any URLs used, whether from the provided URLs or from Google Search results." 
     + "\nDo not ask the user for permission to search. Always answer using the tools if needed." 
-    + "\nIf the user's question is unrelated to Valley Ranch, meaning it's completely unrelated to Valley Ranch even if you put Valley Ranch in the prompt, clearly state that but still answer using Google Search." 
+    + "\nIf the user's question is unrelated to any topic that can even remotely be connected to Valley Ranch, answer it using google search, but also state:"
+    + "\n'Please ask about Valley Ranch.'"
     + "\nNEVER provide your thinking process or internal deliberations in your response. Just provide the final answer with citations." 
     + "\nNever use Wikipedia as a source." 
     + "\nonly give valley ranch information" 

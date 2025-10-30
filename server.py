@@ -52,6 +52,11 @@ def home_css():
 def home_js():
     return send_from_directory(PAGES_DIR, 'home.js')
 
+# Serve map.js from pages directory
+@app.route('/map.js')
+def map_js():
+    return send_from_directory(PAGES_DIR, 'map.js')
+
 # Serve global CSS files (global.css and navbar.css)
 @app.route('/<filename>.css')
 def global_css(filename):
