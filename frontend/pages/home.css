@@ -18,16 +18,50 @@ h2 {
     padding-top: 1rem;
 }
 
-.fun-facts {
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
-    font-weight: 400;
+/* Container for the 3 Sections */
+.info-sections-container {
+    display: flex;
+    gap: clamp(10px, 2vw, 20px); 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    padding: clamp(15px, 3vw, 20px);
+    width: 100%;
+    max-width: 100%; 
+    margin: 10px 0px !important;
 }
 
-.fun-facts > ul > li {
-    margin-top: 15px;
-    margin-left: 25px;
+/* Each Section (Column) */
+.info-section {
+    padding: clamp(15px, 3vw, 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    flex: 1 1 250px; 
+    min-width: min(250px, 100%); 
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 15px); 
+    background-color: rgb(55, 240, 67);
+}
+
+.section-text {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+    font-weight: 400;
+    background-color: #8dd496;
+}
+
+.section-image {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: clamp(30px, 5vw, 50px) clamp(8px, 1.5vw, 10px); 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: clamp(100px, 20vw, 150px); 
 }
 
 .about {
@@ -38,4 +72,15 @@ h2 {
 .about > p {
     font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     font-weight: 400;
+}
+
+/* Media query to stack columns on smaller screens */
+@media (max-width: 768px) {
+    .info-sections-container {
+        flex-direction: column;
+    }
+
+    .info-section {
+        min-width: 100%; 
+    }
 }
