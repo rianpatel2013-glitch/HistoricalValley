@@ -6,8 +6,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #145214;
-    color: #fff;
+    background-color: #ffffff;
+    /* can also do: background-color: #c6d1c6; */
+    color: #145724;
 }
 
 main {
@@ -24,28 +25,21 @@ main::-webkit-scrollbar {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Page Heading Styles */
-h1, h2 {
+/* Heading Styles */
+.page-header {
+    padding: 1rem;
+    background-color: #0b650b;
+    border-bottom: 2px solid #2f4f2f;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    min-width: 100vh;
     text-align: center;
     color: #ffffff;
     font-weight: 400;
     font-size: 2.5rem;
 }
 
-.page-header {
-    padding: 0.65rem;
-    background-color: #183518;
-    border-bottom: 2px solid #2f4f2f;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    min-width: 100vh;
-}
-
-.introduction {
-    margin: 10px 10px;
-    margin-bottom: 20px;
-}
-
-.introduction h2 {
-    text-align: left;
+h2 {
+    text-align: center;
     font-size: 2rem;
+    font-weight: 400;
 }

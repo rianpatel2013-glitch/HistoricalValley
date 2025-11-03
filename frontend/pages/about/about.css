@@ -1,4 +1,4 @@
-/* Container for the three sections */
+/* Container for the 3 Sections */
 .info-sections-container {
     display: flex;
     gap: clamp(10px, 2vw, 20px); 
@@ -10,7 +10,7 @@
     margin: 10px 0px !important;
 }
 
-/* Individual Info Section (the columns) */
+/* Each Section (Column) */
 .info-section {
     padding: clamp(15px, 3vw, 20px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,20 +21,19 @@
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 15px); 
+    background-color: rgb(55, 240, 67);
 }
 
-/* Title box for each section */
+/* Title Box */
 .section-title {
     border: 1px solid #000000;
     border-radius: 8px;
     padding: clamp(8px, 1.5vw, 10px) clamp(10px, 2vw, 15px);
-    text-align: center;
-    font-weight: bold;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    background-color: #8dd496;
 }
 
-/* Placeholder for the image */
-.image-placeholder {
+/* Image Box */
+.section-image {
     border: 1px solid #000000;
     border-radius: 8px;
     padding: clamp(30px, 5vw, 50px) clamp(8px, 1.5vw, 10px); 
@@ -43,23 +42,26 @@
     justify-content: center;
     align-items: center;
     height: clamp(100px, 20vw, 150px); 
-    color: #666;
-    font-style: italic;
-    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
 }
 
-/* Placeholder for the text section box */
-.text-section-placeholder {
+/* Text Box */
+.section-text {
     border: 1px solid #000000;
     border-radius: 8px;
     padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
     font-weight: normal;
     font-size: clamp(0.9rem, 1.8vw, 1rem);
+    background-color: #8dd496;
 }
 
+/* Text */
 .bulleted_list {
     list-style-type: disc;
     padding-left: 20px; 
+}
+
+.bulleted_list > li {
+    padding: 5px;
 }
 
 .source {
