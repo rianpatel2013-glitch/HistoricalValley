@@ -31,7 +31,7 @@
         let dots = 0;
         return setInterval(() => {
             dots = (dots + 1) % 4;
-            el.textContent = "AI is typing" + ".".repeat(dots);
+            el.textContent = "Searching for relating info" + ".".repeat(dots);
         }, 500);
     }
 
