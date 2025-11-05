@@ -8,7 +8,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #ffffff;
     /* can also do: background-color: #c6d1c6; */
-    color: #145724;
+    color: #0e501d;
 }
 
 main {
@@ -41,5 +41,5 @@ main::-webkit-scrollbar {
 h2 {
     text-align: center;
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 450;
 }

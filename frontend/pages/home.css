@@ -41,7 +41,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 15px); 
-    background-color: rgb(55, 240, 67);
+    background-color: rgb(40, 185, 50);
 }
 
 .section-text {
@@ -50,7 +50,7 @@ h2 {
     padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
     font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     font-weight: 400;
-    background-color: #8dd496;
+    background-color: #90d99a;
 }
 
 .section-image {
