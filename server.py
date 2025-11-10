@@ -1,5 +1,4 @@
 from flask import Flask, send_from_directory, send_file
-from waitress import serve
 from flask_cors import CORS
 import os
 
@@ -76,7 +75,10 @@ def api_chat_post():
 def api_chat_get():
     return chat_get()
 
+# For local testing only
 if __name__ == '__main__':
+    from waitress import serve
     PORT = int(os.environ.get('PORT', 8000))
     HOST = '0.0.0.0'
+    print(f"Starting server on {HOST}:{PORT}")
     serve(app, host=HOST, port=PORT)
