@@ -28,7 +28,7 @@ main::-webkit-scrollbar {
 /* Heading Styles */
 .page-header {
     padding: 1rem;
-    background-color: #0b650b;
+    background-color: #3E5F44;
     border-bottom: 2px solid #2f4f2f;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     min-width: 100vh;

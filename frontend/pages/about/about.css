@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 15px); 
-    background-color: rgb(40, 185, 50);
+    background-color: #5F936C;
 }
 
 /* Title Box */
@@ -29,7 +29,7 @@
     border: 1px solid #000000;
     border-radius: 8px;
     padding: clamp(8px, 1.5vw, 10px) clamp(10px, 2vw, 15px);
-    background-color: #51b75d;
+    background-color: #7cda88;
 }
 
 /* Image Box */

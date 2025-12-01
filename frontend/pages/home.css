@@ -41,7 +41,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2vw, 15px); 
-    background-color: rgb(40, 185, 50);
+    background-color: #5E936C;
 }
 
 .section-text {
