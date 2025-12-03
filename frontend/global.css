@@ -29,9 +29,9 @@ main::-webkit-scrollbar {
 .page-header {
     padding: 1rem;
     background-color: #3E5F44;
-    border-bottom: 2px solid #2f4f2f;
+    border-bottom: 4px solid #074807;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    min-width: 100vh;
+    width: 100%;
     text-align: center;
     color: #ffffff;
     font-weight: 400;
@@ -41,5 +41,5 @@ main::-webkit-scrollbar {
 h2 {
     text-align: center;
     font-size: 2rem;
-    font-weight: 450;
+    font-weight: 485;
 }
