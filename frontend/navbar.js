@@ -31,7 +31,7 @@ if (overlay) {
 }
 
 // Stack Title
-function checkTitleStacking() {
+function check_title_stacking() {
     if (!headerStyles || !websiteTitle || !smallScreenHeader) return;
    
     if (window.innerWidth > 768) {
@@ -54,16 +54,16 @@ function checkTitleStacking() {
         smallScreenHeader.classList.remove('stacked-header');
     }
 }
-checkTitleStacking();
+check_title_stacking();
 
 let resizeTimer;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(checkTitleStacking, 100);
+    resizeTimer = setTimeout(check_title_stacking, 100);
 });
 
 if (document.fonts) {
-    document.fonts.ready.then(checkTitleStacking);
+    document.fonts.ready.then(check_title_stacking);
 }
 
 // Open and Close sidebar

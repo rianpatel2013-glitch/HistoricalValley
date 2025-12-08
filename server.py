@@ -1,8 +1,7 @@
 from flask import Flask, send_from_directory, send_file
 from flask_cors import CORS
+from backend.search import chat_post
 import os
-
-from backend.search import chat_post, chat_get
 
 app = Flask(__name__)
 CORS(app)
@@ -46,7 +45,6 @@ def js(page_name, filename):
 @app.route('/home.css')
 def home_css():
     return send_from_directory(PAGES_DIR, 'home.css')
-
 @app.route('/home.js')
 def home_js():
     return send_from_directory(PAGES_DIR, 'home.js')
@@ -71,14 +69,9 @@ def global_js():
 def api_chat_post():
     return chat_post()
 
-@app.route('/api/chat', methods=['GET'])
-def api_chat_get():
-    return chat_get()
-
-# For local testing only
+# Localhost
 if __name__ == '__main__':
     from waitress import serve
     PORT = int(os.environ.get('PORT', 8000))
     HOST = '0.0.0.0'
-    print(f"Starting server on {HOST}:{PORT}")
     serve(app, host=HOST, port=PORT)

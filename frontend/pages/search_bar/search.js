@@ -12,27 +12,33 @@
         return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
 
+    // Loading dots animation
+    function animateLoading(el) {
+        let dots = 0;
+        return setInterval(() => {
+            dots = (dots + 1) % 4;
+            el.textContent = "Searching for related info" + ".".repeat(dots);
+        }, 500);
+    }
+
     // Append a message to chat
-    function appendMessage(sender, text, id = null) {
+    function appendMessage(sender, text, id = null, isHtml = false) {
         const empty = chat().querySelector(".empty-state");
         if (empty) empty.remove();
 
         const msg = document.createElement("div");
         msg.className = `message ${sender}`;
         if (id) msg.id = id;
-        msg.textContent = text;
+
+        if (isHtml) {
+            msg.innerHTML = text;
+        } else {
+            msg.textContent = text;
+        }
+
         chat().appendChild(msg);
         chat().scrollTop = chat().scrollHeight;
         return msg;
-    }
-
-    // Loading dots animation
-    function animateLoading(el) {
-        let dots = 0;
-        return setInterval(() => {
-            dots = (dots + 1) % 4;
-            el.textContent = "Searching for relating info" + ".".repeat(dots);
-        }, 500);
     }
 
     // Send message to backend
@@ -43,35 +49,47 @@
         appendMessage("user-message", value);
         input().value = "";
 
-        // Loading animation
-        const loadingId = "loading-ai";
-        const loadingEl = appendMessage("bot-message", "AI is typing...", loadingId);
+        const loadingEl = appendMessage("bot-message", "Searching for related info.");
         const loadingAnim = animateLoading(loadingEl);
 
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 300000);
+
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
                     prompt: value,
-                    session_id: currentSessionId  // Send session ID
+                    session_id: currentSessionId
                 }),
+                signal: controller.signal
             });
 
+            clearTimeout(timeoutId);
+
             if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-            const data = await res.json();
 
             clearInterval(loadingAnim);
             loadingEl.remove();
 
-            if (data.response) appendMessage("bot-message", data.response);
-            else appendMessage("bot-message", "No response received from AI.");
+            const data = await res.json();
+            if (data.response) {
+                appendMessage("bot-message", data.response, null, true);
+            } else {
+                appendMessage("bot-message", "No response received from AI.");
+            }
 
         } catch (err) {
             console.error(err);
             clearInterval(loadingAnim);
             loadingEl.remove();
-            appendMessage("bot-message", `Error: ${err.message}`);
+            
+            if (err.name === 'AbortError') {
+                appendMessage("bot-message", "Request timed out. The AI took too long to respond.");
+            } else {
+                appendMessage("bot-message", `Error: ${err.message}`);
+            }
         }
     };
 
@@ -85,10 +103,8 @@
 
     // New chat - creates a fresh session
     window.newChat = function newChat() {
-        // Generate new session ID for new conversation
         currentSessionId = generateSessionId();
         
-        // Clear the chat display
         chat().innerHTML = '<div class="empty-state"><p>Ask AI any of your questions about Valley Ranch</p></div>';
         
         console.log('Started new chat with session:', currentSessionId);
