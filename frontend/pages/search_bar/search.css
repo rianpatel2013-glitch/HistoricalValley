@@ -134,6 +134,16 @@ main {
     animation: slideIn 0.3s ease;
 }
 
+.source {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.source:hover {
+    color: #000000;
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;

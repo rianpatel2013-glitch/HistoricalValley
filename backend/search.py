@@ -1,14 +1,19 @@
 from flask import request, jsonify
 from google import genai
 from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
+from google.genai import errors
 from dotenv import load_dotenv
 import os
 import markdown2
-import json
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("Gemini_api_key"))
+def create_client(api_key=None):
+    if api_key is None:
+        api_key = os.getenv("Gemini_api_key")
+    return genai.Client(api_key=api_key)
+
+client = create_client()
 model = "gemini-2.5-flash"
 
 tools = [
@@ -49,18 +54,40 @@ def chat_post(*args, **kwargs):
         chat = chat_sessions[session_id]
 
         # Send message
-        response = chat.send_message(query)
+        try:
+            response = chat.send_message(query)
+        except errors.ClientError as e:
+            # If quota exceeded, retry with a different API key
+            if "429" in str(e):
+                try:
+                    # Create a new client and chat session with testing key (fresh start)
+                    backup_client = create_client(os.getenv("testing_api_key"))
+                    new_chat = backup_client.chats.create(
+                        model=model,
+                        config=GenerateContentConfig(
+                            tools=tools,
+                            system_instruction=instructions,
+                            temperature=0.3
+                        )
+                    )
+                    response = new_chat.send_message(query)
+                    # Only update session if successful
+                    chat_sessions[session_id] = new_chat
 
-        # Extract response text safely
-        response_text = None
-        if hasattr(response, "text") and response.text:
-            response_text = response.text
-        elif hasattr(response, "candidates") and response.candidates:
-            candidate = response.candidates[0]
-            if hasattr(candidate, "content") and candidate.content.parts:
-                response_text = "".join(
-                    [part.text for part in candidate.content.parts if hasattr(part, "text")]
-                )
+                except errors.ClientError as backup_error:
+                    # Both keys exhausted
+                    if "429" in str(backup_error):
+                        return jsonify({
+                            "error": "API quota exceeded",
+                            "response": "Both API keys have exceeded their daily quota. Please try again later."
+                        }), 429
+                    else:
+                        raise
+            else:
+                raise
+
+        # Getting response
+        response_text = response.text
 
         if not response_text:
             return jsonify({
@@ -73,6 +100,18 @@ def chat_post(*args, **kwargs):
             response_text,
             extras=["break-on-newline", "fenced-code-blocks", "tables"]
         )
+
+        sources = ""
+        
+        if response.candidates and len(response.candidates) > 0:
+            grounding = response.candidates[0].grounding_metadata
+            if grounding and hasattr(grounding, 'grounding_chunks') and grounding.grounding_chunks:
+                for chunk in grounding.grounding_chunks:
+                    if hasattr(chunk, 'web') and chunk.web:
+                        sources += f'<li><a href="{chunk.web.uri}" class="source">{chunk.web.title}</a></li>\n'
+        
+        if sources:
+            html_response += f"<h3>Sources:</h3>\n<ul>{sources}</ul>"
 
         return jsonify({"response": html_response})
 
