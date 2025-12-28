@@ -168,7 +168,7 @@ h2 {
 }
 
 .flashcard:hover .flashcard-front {
-    background-color:rgba(11, 101, 11, 0.8) ;
+    background-color:c ;
 }
 
 .flashcard:hover .flashcard-back {
