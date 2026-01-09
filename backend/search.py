@@ -8,12 +8,7 @@ import markdown2
 
 load_dotenv()
 
-def create_client(api_key=None):
-    if api_key is None:
-        api_key = os.getenv("Gemini_api_key")
-    return genai.Client(api_key=api_key)
-
-client = create_client()
+client = genai.Client(api_key=os.getenv("Gemini_api_key"))
 model = "gemini-2.5-flash"
 
 tools = [
@@ -60,8 +55,8 @@ def chat_post(*args, **kwargs):
             # If quota exceeded, retry with a different API key
             if "429" in str(e):
                 try:
-                    # Create a new client and chat session with testing key (fresh start)
-                    backup_client = create_client(os.getenv("testing_api_key"))
+                    # Retry by creating a new client and chat session with the backup api key
+                    backup_client = genai.Client(api_key=os.getenv("Backup_api_key"))
                     new_chat = backup_client.chats.create(
                         model=model,
                         config=GenerateContentConfig(

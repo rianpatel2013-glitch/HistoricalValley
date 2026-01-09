@@ -3,7 +3,6 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const smallScreenNav = document.querySelector('.drop_down-nav');
 const overlay = document.querySelector('.overlay');
-const sidebarToggle = document.querySelector('.sidebar-toggle');
 const sidebar = document.querySelector('.sidebar');
 const body = document.body;
 const headerStyles = document.querySelector('.header-styles');
@@ -64,25 +63,4 @@ window.addEventListener('resize', function() {
 
 if (document.fonts) {
     document.fonts.ready.then(check_title_stacking);
-}
-
-// Open and Close sidebar
-if (sidebarToggle && sidebar) {
-    sidebarToggle.textContent = '✕';
-    
-    sidebarToggle.setAttribute('aria-label', 'Close sidebar');
-   
-    sidebarToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        sidebar.classList.toggle('collapsed');
-       
-        if (sidebar.classList.contains('collapsed')) {
-            sidebarToggle.textContent = '☰';
-            sidebarToggle.setAttribute('aria-label', 'Open sidebar');
-        } else {
-            sidebarToggle.textContent = '✕';
-            sidebarToggle.setAttribute('aria-label', 'Close sidebar');
-        }
-    });
 }
