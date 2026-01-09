@@ -178,6 +178,24 @@
 }
 
 /* Sidebar Header */
+.sidebar-toggle {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: rgba(121, 168, 169, 0.2);
+    color: #79A8A9;
+}
+
+.sidebar-toggle:focus {
+    outline: none;
+}
+
 .sidebar-header {
     display: flex;
     flex-direction: column;
@@ -340,9 +358,9 @@
 
     .sidebar-nav a:hover,
     .sidebar-nav a:focus {
-        background-color: #08A045;
-        color: #04351f;
-        border-left-color: black;
+        background-color: rgba(121, 168, 169, 0.1);
+        color: #79A8A9;
+        border-left-color: #79A8A9;
         outline: none;
     }
 
