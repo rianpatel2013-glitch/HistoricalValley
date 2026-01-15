@@ -6,8 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    /* can also do: background-color: #c6d1c6; */
+    background-color: #f8fff8;
     color: #0e501d;
 }
 
@@ -28,8 +27,8 @@ main::-webkit-scrollbar {
 /* Heading Styles */
 .page-header {
     padding: 1rem;
-    background-color: #3E5F44;
-    border-bottom: 4px solid #074807;
+    background-color: #0B6E4F;
+    border-bottom: 4px solid #0B6E4F;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     width: 100%;
     text-align: center;
@@ -42,4 +41,5 @@ h2 {
     text-align: center;
     font-size: 2rem;
     font-weight: 485;
+    color:rgb(19, 24, 189);
 }

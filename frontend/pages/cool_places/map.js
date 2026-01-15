@@ -118,45 +118,23 @@ window.addEventListener('load', function() {
     // });
     // map.addControl(new compassControl());
 
-    setTimeout(() => {
-        const titles = document.querySelectorAll('.significantBox .tag h2');
+    // Function to zoom to specific location on map
+    window.showLocationOnMap = function(locationName) {
+        // Scroll to Map
+        const mapElement = document.getElementById('map');
+        mapElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        titles.forEach(title => {
-            const titleText = title.textContent.trim();
-            
-            // Make Titles Clickable
-            title.style.cursor = 'pointer';
-            title.style.transition = 'color 0.3s ease';
-            
-            // Hover Effect
-            title.addEventListener('mouseenter', () => {
-                title.style.color = '#005566';
-            });
-            
-            title.addEventListener('mouseleave', () => {
-                title.style.color = '#002938';
-            });
-            
-            // Click Handler
-            title.addEventListener('click', () => {
-                
-                // Scroll to Map
-                const mapElement = document.getElementById('map');
-                mapElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Zoom to Marker After Scrolling is Finished
-                setTimeout(() => {
-                    map.invalidateSize();
+        // Zoom to Marker After Scrolling is Finished
+        setTimeout(() => {
+            map.invalidateSize();
 
-                    if (titleText.includes('Cimarron Park')) {
-                        map.setView([32.9312322, -96.9471744], 17, { animate: true });
-                        setTimeout(() => customMarker.openPopup(), 500);
-                    } else if (titleText.includes('Canal')) {
-                        map.setView([32.9350918,-96.9546313], 17, { animate: true });
-                        setTimeout(() => canalMarker.openPopup(), 500);
-                    }
-                }, 800);
-            });
-        });
-    }, 100);
+            if (locationName.includes('Cimarron')) {
+                map.setView([32.9312322, -96.9471744], 17, { animate: true });
+                setTimeout(() => customMarker.openPopup(), 500);
+            } else if (locationName.includes('Canal')) {
+                map.setView([32.9350918,-96.9546313], 17, { animate: true });
+                setTimeout(() => canalMarker.openPopup(), 500);
+            }
+        }, 800);
+    };
 });
