@@ -201,19 +201,8 @@ h2 {
 }
 
 .about {
-    padding: clamp(15px, 3vw, 20px);
+    padding: clamp(10px, 2vw, 15px);
     margin-bottom: 20px;
-}
-
-.about-box {
-    border: 1px solid #000000;
-    border-radius: 8px;
-    padding: clamp(15px, 2.5vw, 20px) clamp(8px, 1.5vw, 10px);
-    background-color: rgb(107, 209, 113);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about-box > p {
     font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     font-weight: 460;
     line-height: 1.4;
