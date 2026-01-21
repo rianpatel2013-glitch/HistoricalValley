@@ -159,22 +159,27 @@ h2 {
 
 .flashcard-front {
     align-items: center;
-    background-color: #6b8555;
+    background-color: #0b650b;
     transition: background-color 0.3s ease;
 }
 
 .flashcard-back {
-    background-color: #b8ad64;
+    background-color:#08A045;
     transform: rotateY(180deg);
     transition: background-color 0.3s ease;
+    color: white;
+}
+
+h2 {
+    color: white;
 }
 
 .flashcard:hover .flashcard-front {
-    background-color: rgb(35, 165, 45);
+    background-color:#08A045;
 }
 
 .flashcard:hover .flashcard-back {
-    background-color: #97914f;
+    background-color: #0b650b;
 }
 
 .flashcard-question {

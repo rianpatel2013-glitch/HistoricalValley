@@ -32,6 +32,10 @@
     background-color: #8dd496;
 }
 
+h2 {
+    color:seagreen;
+}
+
 /* Image Box */
 .section-image {
     border: 1px solid #000000;
