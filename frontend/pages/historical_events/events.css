@@ -12,24 +12,34 @@
     padding: 10px 50px;
     position: relative;
     width: 50%;
-    background: rgb(94, 147, 108);
+    background:#0B6E4F;
+    color: white;
 
+
+}
+
+
+h2{
+    color:white;
 }
 .textbox{
     padding: 20px 30px;
     position: relative;
     border-radius: 6px;
     font-size:15px;
-    
+   
 }
+
 
 .left-container{
     left:0;
 }
 
+
 .right-container{
     left:50%;
 }
+
 
 .timeline::after{
     content:"";
@@ -42,4 +52,9 @@
     margin-left:-3px;
     z-index:-1;
 
+
+}
+
+small{
+    font-size: 15px;
 }
