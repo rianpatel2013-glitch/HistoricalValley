@@ -12,8 +12,13 @@
     padding: 10px 50px;
     position: relative;
     width: 50%;
-    background: rgb(94, 147, 108);
+    background:#0B6E4F;
+    color: white;
 
+}
+
+h2{
+    color:white
 }
 .textbox{
     padding: 20px 30px;
