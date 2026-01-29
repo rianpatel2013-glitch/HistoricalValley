@@ -1,31 +1,40 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
 .timeline{
     position: relative;
     max-width:1200px;
-    margin:100px;
+    margin:55px;
 }
+
 .container{
     padding: 10px 50px;
     position: relative;
     width: 50%;
-    background:#0B6E4F;
+    background:#39ae1f;
     color: white;
-
 }
 
-h2{
-    color:white;
-}
 .textbox{
     padding: 20px 30px;
     position: relative;
     border-radius: 6px;
     font-size:15px;
-    
+}
+
+h2{
+    color:white;
+}
+
+h3{
+    padding-top: 2px;
+    padding-bottom: 5px;
+    font-size: 1.7rem;
+    text-align: center;
+    color: rgb(30, 41, 193);
+    font-weight: 550;
+}
+
+p{
+    font-size: 1.1rem;
+    padding-top: 5px;
 }
 
 .left-container{
@@ -46,5 +55,4 @@ h2{
     left:50%;
     margin-left:-3px;
     z-index:-1;
-
 }

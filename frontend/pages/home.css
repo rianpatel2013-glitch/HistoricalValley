@@ -170,10 +170,6 @@ h2 {
     color: white;
 }
 
-    h2 {
-    color: white;
-}
-
 .flashcard:hover .flashcard-front {
     background-color:#08A045;
 }
@@ -209,9 +205,17 @@ h2 {
     padding: clamp(10px, 2vw, 15px);
     margin-bottom: 20px;
     font-size: clamp(1.25rem, 1.5vw, 1.75rem);
-    font-weight: 460;
+    font-weight: 490;
     line-height: 1.4;
     text-align: center;
+}
+
+.iframe-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    padding-top: 10px;
 }
 
 /* Media query to stack columns on smaller screens */
