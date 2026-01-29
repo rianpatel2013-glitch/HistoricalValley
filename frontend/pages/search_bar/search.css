@@ -27,6 +27,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: #b3e0d2;
 }
 
 .empty-state {
@@ -60,7 +61,7 @@ main {
 }
 
 .source:hover {
-    color: #000000;
+    color: #77ff00;
 }
 
 @keyframes slideIn {
@@ -172,7 +173,7 @@ input[type="text"]::placeholder {
 @media (max-width: 768px) {
     main {
         flex-direction: column;
-        height: calc(100vh - 5rem);
+        height: calc(100vh - 8rem);
     }
 
     .message {
