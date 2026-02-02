@@ -185,4 +185,20 @@ input[type="text"]::placeholder {
     .message {
         max-width: 85%;
     }
+
+    .input-container {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    input[type="text"] {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .send-btn {
+        flex: 1 1 auto;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
 }
