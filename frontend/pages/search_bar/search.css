@@ -189,16 +189,19 @@ input[type="text"]::placeholder {
     .input-container {
         flex-direction: column;
         gap: 10px;
+        justify-content: flex-start;
     }
 
     input[type="text"] {
-        flex: 1;
+        flex: 0;
         min-width: 0;
+        width: 100%;
     }
 
     .send-btn {
         width: 100%;
         padding: 12px 20px;
         font-size: 0.95rem;
+        flex-shrink: 0;
     }
 }
