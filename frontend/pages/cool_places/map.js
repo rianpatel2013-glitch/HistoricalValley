@@ -47,17 +47,17 @@ window.addEventListener('load', function() {
     // Polygon Popup
     valleyRanchPolygon.bindPopup('<b>Valley Ranch</b><br>Irving, Texas');
 
+    // Cimarron Park Recreation Center Marker
+    const customMarker = L.marker([32.931218, -96.946707]).addTo(map);
+    customMarker.bindPopup('<b>Cimarron Park Recreation Center</b><br>Community hub and recreation facility');  
+
     // Valley Ranch Canals Marker
-    const canalMarker = L.marker([32.9350918,-96.9546313]).addTo(map);
+    const canalMarker = L.marker([32.934844, -96.955168]).addTo(map);
     canalMarker.bindPopup('<b>Valley Ranch Canals</b><br>Scenic waterways and walking paths');
 
-    // Cimarron Park Recreation Center Marker
-    const customMarker = L.marker([32.9312322, -96.9471744]).addTo(map);
-    customMarker.bindPopup('<b>Cimarron Park Recreation Center</b><br>Community hub and recreation facility');
-
-    // Bruno's Ristorante Marker
-    const brunosMarker = L.marker([32.9346803, -96.9563815]).addTo(map);
-    brunosMarker.bindPopup('<b>Bruno\'s Ristorante</b><br>Italian cuisine and fine dining');
+    // Valley Ranch Library Marker
+    const libraryMarker = L.marker([32.934064, -96.95062]).addTo(map);
+    libraryMarker.bindPopup('<b>Valley Ranch Library</b><br>Modern community library with resources and programs');
 
 
     // Center on Valley Ranch Polygon
@@ -74,14 +74,16 @@ window.addEventListener('load', function() {
             map.invalidateSize();
 
             if (locationName.includes('Cimarron')) {
-                map.setView([32.9312322, -96.9471744], 17, { animate: true });
+                map.setView([32.931218, -96.946707], 17, { animate: true });
                 setTimeout(() => customMarker.openPopup(), 500);
+
             } else if (locationName.includes('Canal')) {
-                map.setView([32.9350918,-96.9546313], 17, { animate: true });
+                map.setView([32.934844, -96.955168], 17, { animate: true });
                 setTimeout(() => canalMarker.openPopup(), 500);
-            } else if (locationName.includes('Bruno')) {
-                map.setView([32.9346803, -96.9563815], 17, { animate: true });
-                setTimeout(() => brunosMarker.openPopup(), 500);
+
+            } else if (locationName.includes('Library')) {
+                map.setView([32.934064, -96.95062], 17, { animate: true });
+                setTimeout(() => libraryMarker.openPopup(), 500);
             }
         }, 800);
     };

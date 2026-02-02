@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 3rem;
     padding: 0.7rem;
 }
@@ -109,7 +109,7 @@ h1 {
 h2 {
     text-align: left;
     padding-left: 1.8rem;
-    padding-top: 1rem;
+    padding-top: 1.2rem;
 }
 
 /* Container for the 3 Sections */
@@ -211,6 +211,8 @@ h2 {
 }
 
 .iframe-wrap {
+    width: 100%;
+    height: clamp(400px, 50vw, 600px);
     display: flex;
     justify-content: center;
     align-items: center;

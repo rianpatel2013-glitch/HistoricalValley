@@ -5,8 +5,10 @@
 }
 
 body {
+    height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #0e501d;
+    background-color: #b3e0d2;
 }
 
 @keyframes fadeIn {
@@ -24,7 +26,6 @@ main {
     -webkit-animation: fadeIn 0.5s ease-in forwards;
     animation: fadeIn 0.5s ease-in forwards;
     overflow: auto;
-    background-color: #b3e0d2;
 }
 
 /* Heading Styles */
@@ -44,5 +45,5 @@ h2 {
     text-align: center;
     font-size: 2rem;
     font-weight: 485;
-    color:rgb(19, 24, 189);
+    color:rgb(9, 14, 159);
 }

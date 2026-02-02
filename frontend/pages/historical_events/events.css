@@ -1,29 +1,30 @@
-.timeline{
+.timeline {
     position: relative;
-    max-width:1200px;
-    margin:55px;
+    max-width: 100%;
+    margin: 55px auto;
+    padding: 0 20px;
 }
 
-.container{
+.container {
     padding: 10px 50px;
     position: relative;
-    width: 50%;
-    background:#39ae1f;
+    width: calc(50% - 60px);
+    background: #39ae1f;
     color: white;
 }
 
-.textbox{
+.text_box {
     padding: 20px 30px;
     position: relative;
     border-radius: 6px;
     font-size:15px;
 }
 
-h2{
+h2 {
     color:white;
 }
 
-h3{
+h3 {
     padding-top: 2px;
     padding-bottom: 5px;
     font-size: 1.7rem;
@@ -32,20 +33,20 @@ h3{
     font-weight: 550;
 }
 
-p{
+p {
     font-size: 1.1rem;
     padding-top: 5px;
 }
 
-.left-container{
+.left-container {
     left:0;
 }
 
-.right-container{
+.right-container {
     left:50%;
 }
 
-.timeline::after{
+.timeline::after {
     content:"";
     position:absolute;
     width:6px;
