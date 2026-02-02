@@ -1,20 +1,19 @@
 .timeline {
     position: relative;
-    max-width: 100%;
-    margin: 55px auto;
-    padding: 0 20px;
+    width: 100%;
+    margin: 55px 0;
 }
 
 .container {
     padding: 10px 50px;
     position: relative;
-    width: calc(50% - 60px);
+    width: 50%;
     background: #39ae1f;
     color: white;
 }
 
 .text_box {
-    padding: 20px 30px;
+    padding: 20px 10px;
     position: relative;
     border-radius: 6px;
     font-size:15px;
