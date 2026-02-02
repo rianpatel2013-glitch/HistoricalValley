@@ -183,8 +183,8 @@ input[type="text"]::placeholder {
     }
 
     .chat-container {
-        flex: 0 1 auto;
-        max-height: 60vh;
+        flex: 1;
+        min-height: 0;
     }
 
     .message {
@@ -195,11 +195,10 @@ input[type="text"]::placeholder {
         flex-direction: column;
         gap: 10px;
         padding: 1rem;
+        flex-shrink: 0;
     }
 
     input[type="text"] {
-        flex: 0 0 auto;
-        min-width: 0;
         width: 100%;
     }
 
