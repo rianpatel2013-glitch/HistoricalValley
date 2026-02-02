@@ -182,29 +182,26 @@ input[type="text"]::placeholder {
         height: calc(100vh - 8rem);
     }
 
-    .chat-container {
-        flex: 1;
-        min-height: 0;
-    }
-
     .message {
         max-width: 85%;
     }
 
     .input-container {
-        flex-direction: column;
-        gap: 10px;
-        padding: 1rem;
-        flex-shrink: 0;
+        gap: 4px;
+        padding: 0.75rem;
+        flex-wrap: nowrap;
     }
 
     input[type="text"] {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
+        padding: 10px 12px;
+        font-size: 16px;
     }
 
     .send-btn {
-        width: 100%;
-        padding: 14px 28px;
-        font-size: 1rem;
+        flex: 0 0 auto;
+        padding: 10px 14px;
+        font-size: 0.9rem;
     }
 }
