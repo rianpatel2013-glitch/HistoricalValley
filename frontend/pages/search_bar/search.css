@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: auto;
 }
 
 main {
@@ -177,42 +177,12 @@ input[type="text"]::placeholder {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        overflow: auto;
-    }
-
     main {
         flex-direction: column;
-        height: auto;
-    }
-
-    .chat-area {
-        padding-bottom: 150px;
+        height: calc(100vh - 8rem);
     }
 
     .message {
         max-width: 85%;
-    }
-
-    .input-container {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        gap: 8px;
-        padding: 1rem;
-        flex-wrap: wrap;
-        box-sizing: border-box;
-    }
-
-    input[type="text"] {
-        flex: 1 1 60%;
-        min-width: 0;
-    }
-
-    .send-btn {
-        flex: 1 1 auto;
-        padding: 14px 20px;
     }
 }
