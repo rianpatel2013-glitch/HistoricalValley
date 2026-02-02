@@ -177,9 +177,17 @@ input[type="text"]::placeholder {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
     main {
         flex-direction: column;
-        height: calc(100vh - 8rem);
+        height: auto;
+    }
+
+    .chat-area {
+        padding-bottom: 150px;
     }
 
     .message {
@@ -187,21 +195,24 @@ input[type="text"]::placeholder {
     }
 
     .input-container {
-        gap: 4px;
-        padding: 0.75rem;
-        flex-wrap: nowrap;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        gap: 8px;
+        padding: 1rem;
+        flex-wrap: wrap;
+        box-sizing: border-box;
     }
 
     input[type="text"] {
-        flex: 1;
+        flex: 1 1 60%;
         min-width: 0;
-        padding: 10px 12px;
-        font-size: 16px;
     }
 
     .send-btn {
-        flex: 0 0 auto;
-        padding: 10px 14px;
-        font-size: 0.9rem;
+        flex: 1 1 auto;
+        padding: 14px 20px;
     }
 }
